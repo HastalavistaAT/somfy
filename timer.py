@@ -153,9 +153,9 @@ while True:
 #	      format(AMh, AMm, UMh, UMm))
 		
 	current_time = datetime.datetime.now().time()
-        print(str(state))
-        print(sunset_offset.time())
-        print(time_in_range(datetime.time(AMh, AMm, 0), sunset_offset.time(), current_time))
+#        print(str(state))
+#        print(sunset_offset.time())
+#        print(time_in_range(datetime.time(AMh, AMm, 0), sunset_offset.time(), current_time))
         if (time_in_range(datetime.time(AMh, AMm, 0), sunset_offset.time(), current_time)):
 	    if not state == UP:
 		state = UP
