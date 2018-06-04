@@ -164,5 +164,22 @@ while True:
 	    if not state == DOWN:
 		state = DOWN
 		switchrelay(21)
-                        
-	time.sleep(1)
+        
+        # write data in file
+        file = open("status.txt", "w")
+        file.write(datetime.time(AMh, AMm, 0).isoformat())
+        file.write(";")
+        file.write(sunset_offset.time().isoformat())
+        file.write(";")
+        
+        if state == UP:
+            file.write("offen")
+        elif state == DOWN:
+            file.write("geschlossen")
+        else:
+            file.write("unbekannt")
+        file.write(";")
+        file.write(current_time.isoformat())
+        file.close()
+
+	time.sleep(5)
