@@ -167,19 +167,15 @@ while True:
         
         # write data in file
         file = open("status.txt", "w")
-        file.write(datetime.time(AMh, AMm, 0).isoformat())
-        file.write(";")
-        file.write(sunset_offset.time().isoformat())
-        file.write(";")
+        file.write(datetime.time(AMh, AMm, 0).isoformat()+"\n")
+        file.write(sunset_offset.time().isoformat()+"\n")
         
         if state == UP:
-            file.write("offen")
+            file.write("offen\n")
         elif state == DOWN:
-            file.write("geschlossen")
+            file.write("geschlossen\n")
         else:
-            file.write("unbekannt")
-        file.write(";")
-        file.write(current_time.isoformat())
+            file.write("unbekannt\n")
         file.close()
 
-	time.sleep(5)
+        time.sleep(60)
