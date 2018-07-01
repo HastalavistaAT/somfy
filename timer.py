@@ -166,7 +166,7 @@ while True:
 		switchrelay(21)
         
         # write data in file
-        file = open("status.txt", "w")
+        file = open("/home/pi/somfy/status.txt", "w")
         file.write(datetime.time(AMh, AMm, 0).isoformat()+"\n")
         file.write(sunset_offset.time().isoformat()+"\n")
         
