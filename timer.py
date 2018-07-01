@@ -149,6 +149,8 @@ while True:
         sunset = datetime.time(UMh, UMm, 0)
         sunset_offset = datetime.datetime.combine(datetime.date.today(), sunset) + datetime.timedelta(minutes = 30)
 
+        sunrise = datetime.time(AMh, AMm, 0)
+        sunrise_offset = datetime.datetime.combine(datetime.date.today(), sunrise) - datetime.timedelta(minutes = 30)
 #	print("Sonnenaufgang {0:02d}:{1:02d} Sonnenuntergang {2:02d}:{3:02d}".
 #	      format(AMh, AMm, UMh, UMm))
 		
@@ -156,7 +158,7 @@ while True:
 #        print(str(state))
 #        print(sunset_offset.time())
 #        print(time_in_range(datetime.time(AMh, AMm, 0), sunset_offset.time(), current_time))
-        if (time_in_range(datetime.time(AMh, AMm, 0), sunset_offset.time(), current_time)):
+        if (time_in_range(sunrise_offset.time(), sunset_offset.time(), current_time)):
 	    if not state == UP:
 		state = UP
 		switchrelay(20)
@@ -167,7 +169,7 @@ while True:
         
         # write data in file
         file = open("/home/pi/somfy/status.txt", "w")
-        file.write(datetime.time(AMh, AMm, 0).isoformat()+"\n")
+        file.write(sunrise_offset.time().isoformat()+"\n")
         file.write(sunset_offset.time().isoformat()+"\n")
         
         if state == UP:
